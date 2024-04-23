@@ -1,0 +1,49 @@
+<!-- show-chambre-detailsresdate.component.html -->
+<div class="sidebar">
+  <!-- Your sidebar content goes here -->
+  <app-admin-dash></app-admin-dash>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+<br>
+
+<body>
+    
+<form [formGroup]="dateForm" (ngSubmit)="fetchChambreDetails()">
+    <label for="dateDebut">Start Date:</label>
+    <input type="date" id="dateDebut" formControlName="dateDebut">
+  
+    <label for="dateFin">End Date:</label>
+    <input type="date" id="dateFin" formControlName="dateFin">
+  
+    <button type="submit">Fetch Chambre Details</button>
+</form>
+
+<!-- show-chambre-detailsresdate.component.html -->
+<div class="card mt-4">
+    <div *ngIf="chambreDetails && chambreDetails.length > 0">
+      <div class="card-body">
+        <h2 class="card-title">Chambre Details</h2>
+        <div class="custom-card">
+          <div class="chambre-details" *ngFor="let chambre of chambreDetails">
+            <p><strong>Chambre Number:</strong> {{ chambre.numerochambre }}</p>
+            <p><strong>Type:</strong> {{ chambre.typechambre }}</p>
+            <p><strong>Bloc:</strong> {{ chambre.bloc.nomBloc }}</p>
+            <p><strong>Année Universitaire de Reservation:</strong> {{ chambre.reservations[0].anneeUniversitaire | date: 'yyyy-MM-dd' }}</p>
+            <p><strong>ID de Reservation:</strong> {{ chambre.reservations[0]?.idReservation }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="chambreDetails && chambreDetails.length === 0" class="card-body">
+      <p class="card-text">No chambre found for the specified date range.</p>
+    </div>
+  </div>
+  
+</body>
+
+
+<app-footer-back class="footer-container"></app-footer-back>

@@ -1,0 +1,25 @@
+<div class="container my-container" *ngIf="!authResponse.mfaEnabled">
+    <div class="card justify-content-md-center">
+        <div class="card-header text-center">
+            <h2>Login</h2>
+        </div>
+
+        <div *ngIf="errorMessage" class="card-body error-message">
+            {{ errorMessage }}
+        </div>
+        <form class="card-body" (ngSubmit)="authenticate()">
+            <div class="mb-3">
+                <label for="username" class="form-label">Email</label>
+                <input type="text" id="username" name="username" class="form-control" required [(ngModel)]="authRequest.email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="authRequest.password">
+            </div>
+            <div class="mb-3 d-grid">
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a routerLink="/register" class="btn btn-link">Register</a>
+            </div>
+        </form>
+    </div>
+</div>

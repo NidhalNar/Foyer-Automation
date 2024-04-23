@@ -1,0 +1,75 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+
+<section>
+
+  <div class="container mt-4 d-flex align-items-center justify-content-center">
+
+    <div class="container mt-4">
+
+      <div class="container mt-4">
+        <!-- Ajouter un champ de saisie ou une liste déroulante pour la note de filtrage -->
+        <div class="form-group">
+          <label for="noteFilter">Filtrer par note de 0 à 100 :</label>
+          <input type="number" class="form-control form-control-sm" id="noteFilter" [(ngModel)]="noteFilter">
+          <br>
+          <button type="button" class=" btn btn-det " (click)="applyFilter()">
+
+            <i class="fas fa-filter"></i> Filtrer
+          </button>
+        </div>
+
+        <!-- Ajouter un bouton pour déclencher le filtrage -->
+
+        <div class="row">
+          <div class="col-md-4" *ngFor="let chambre of (filteredChambres.length > 0 ? filteredChambres : chambres)">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title"> <i class="fas fa-bed icon"></i>Numéro de Chambre: {{ chambre.numerochambre }}
+                </h5>
+                <p class="card-text"> Type de Chambre: {{ chambre.typechambre }}</p>
+                <p class="card-text"> Nom du Bloc: {{ chambre.bloc!.nomBloc }}</p>
+
+                <!-- Afficher la note moyenne s'il y a des évaluations -->
+                <ng-container *ngIf="chambre.evaluations && chambre.evaluations.length > 0">
+                  <p class="card-text"><i class="fas fa-star icon"></i>Note Evaluation: {{ chambre.noteEvaluation }}</p>
+                </ng-container>
+                <!-- Sinon, afficher un message indiquant que l'évaluation est manquante -->
+                <ng-container *ngIf="!(chambre.evaluations && chambre.evaluations.length > 0)">
+                  <p class="card-text"><i class="fas fa-star icon"></i>Pas évalué</p>
+                </ng-container>
+                <div class="btn-group" role="group">
+                  <!-- Action buttons with Font Awesome icons -->
+                  <div class="col-md-">
+
+
+                    <!-- Example in a template -->
+                    <!-- In your HTML template where you have the button for details -->
+                    <button type="button" class="btn .btn-det" (click)="showDetails(chambre.idChambre)">Details</button>
+
+
+
+
+
+
+                    <button type="button" class="btn btn-res"
+                      (click)="redirectToReservation(chambre.idChambre, chambre.typechambre)">
+                      <i class="fas fa-bed" style="color:beige;"></i> Réserver
+                    </button>
+                    <button type="button" class="btn btn-eval" (click)="openEvaluationForm(chambre.idChambre)">
+                      <i class="fas fa-star"></i> Évaluer
+                    </button>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,110 @@
+/* Ajoutez ces styles à votre fichier CSS (styles.css ou styles.scss) */
+
+
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-body {
+    padding: 20px;
+    text-align: center;
+  }
+
+  
+  .card-title {
+   
+    margin-bottom: 10px;
+    
+  }
+  
+  .card-text {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  .btn-group {
+    margin-top: 15px;
+  }
+  
+  .btn {
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  .btn:hover {
+    filter: brightness(90%);
+  }
+  
+  /* Dégradé de couleur bleu et blanc */
+  .card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+   
+  }
+  
+  /* Styles pour les boutons */
+  .btn-det {
+    background-color: #C8AE7D;
+    color: #fff;
+  }
+  
+  .btn-res {
+    background-color: #EAC696;
+    color: #fff;
+  }
+  
+  .btn-eval {
+    background-color: #765827;
+    color: #fff;
+  }
+  
+  /* Styles pour les boutons au survol */
+
+
+  /* Ajouter ces styles à votre fichier CSS (styles.css ou styles.scss) */
+
+/* Style pour la zone de filtrage */
+.form-group {
+  margin-bottom: 15px;
+  position: relative; /* Permet de positionner l'icône de filtrage à l'intérieur de la zone de saisie */
+}
+
+/* Icône de filtrage */
+#noteFilterIcon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Styles pour la zone de filtrage au survol */
+.form-group:hover {
+  background-color: #f5f5f5;
+}
+#noteFilter {
+  /* Add your custom styles here */
+  width: 250px; /* Adjust the width as needed */
+  height: 30px; /* Adjust the height as needed */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  border: 1px solid #ccc; /* Optional: Add border for a more defined look */
+  padding: 5px; /* Optional: Adjust padding for inner spacing */
+  box-sizing: border-box; /* Optional: Include padding and border in the element's total width and height */
+}
+
+#noteFilter:focus {
+  /* Optional: Add styles for the focused state */
+  outline: none; /* Remove default focus outline */
+  border-color: #765827; /* Change border color when focused */
+}

@@ -1,0 +1,88 @@
+<!-- AjoutBlocComponent HTML avec Bootstrap et personnalisation -->
+<div class="page-container">
+  <div class="content-container">
+    <div class="sidebar">
+      <!-- Your sidebar content goes here -->
+      <app-admin-dash></app-admin-dash>
+    </div>
+
+            <!-- Ajoutez ceci pour afficher l'alerte Bootstrap -->
+
+
+<body><div class="container mt-4">
+ 
+  <div class="card bg-light">
+    <div class="card-header  text-white">
+      <h2 class="mb-0">Ajouter un bloc</h2>
+    </div>
+    <div class="card-body">
+      <form *ngIf="addBlocForm" [formGroup]="addBlocForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="nomBloc">Nom du Bloc :</label>
+          <input
+            type="text"
+            id="nomBloc"
+            formControlName="nomBloc"
+            class="form-control"
+            placeholder="Entrez le nom du bloc"
+            required
+          />
+          <div *ngIf="addBlocForm.get('nomBloc')?.hasError('required') && addBlocForm.get('nomBloc')?.touched" class="error-message">
+            Le nom du bloc est requis.
+          </div>
+          <div *ngIf="addBlocForm.get('nomBloc')?.hasError('minlength')" class="error-message">
+            Le nom du bloc doit comporter au moins 3 caractères.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="capciteBloc">Capacité du Bloc :</label>
+          <input
+            type="text"
+            id="capciteBloc"
+            formControlName="capciteBloc"
+            class="form-control"
+            placeholder="Entrez la capacité du bloc"
+            required
+          />
+          <div *ngIf="addBlocForm.get('capciteBloc')?.hasError('required') && addBlocForm.get('capciteBloc')?.touched" class="error-message">
+            La capacité du bloc est requise.
+          </div>
+          <div *ngIf="addBlocForm.get('capciteBloc')?.hasError('pattern')" class="error-message">
+            La capacité du bloc doit être un nombre.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="foyer">Sélectionner le Foyer :</label>
+          <select
+            id="foyer"
+            formControlName="foyer"
+            class="form-control"
+            required
+          >
+            <option *ngFor="let foyer of foyers" [ngValue]="foyer">
+              {{ foyer.nomFoyer }}
+            </option>
+          </select>
+          <div *ngIf="addBlocForm.get('foyer')?.hasError('required') && addBlocForm.get('foyer')?.touched" class="error-message">
+            Veuillez sélectionner un foyer.
+          </div>
+        </div>
+        <br/>
+        <div class="text-center">
+        <button type="submit" class="btn ">
+          <i class="fas fa-cube "></i>Ajouter Bloc
+        </button>
+        
+        </div>
+        <br>
+        <div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+          bloc ajout avec succès!
+          
+          </div>
+
+      </form>
+    </div>
+  </div>
+</div></body>
+
+<app-footer-back class="footer-container"></app-footer-back>

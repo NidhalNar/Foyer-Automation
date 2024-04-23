@@ -1,0 +1,59 @@
+<div class="sidebar">
+  <!-- Your sidebar content goes here -->
+  <app-admin-dash></app-admin-dash>
+</div>
+<body>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="mb-0">Modifier le Bloc</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="updateBloc()" class="needs-validation" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="nomBloc">Nom du Bloc:</label>
+              <input type="text" id="nomBloc" [(ngModel)]="bloc.nomBloc" name="nomBloc" class="form-control" required>
+              <div class="invalid-feedback">
+                Veuillez fournir un nom de bloc.
+              </div>
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label for="capaciteBloc">Capacité du Bloc:</label>
+              <input type="text" id="capaciteBloc" [(ngModel)]="bloc.capciteBloc" name="capaciteBloc" class="form-control" required>
+              <div class="invalid-feedback">
+                Veuillez fournir une capacité de bloc valide.
+              </div>
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label for="foyer">Foyer:</label>
+              <select id="foyer" [(ngModel)]="bloc.foyer!.idFoyer" name="foyer" class="form-control" required>
+                <option *ngFor="let foyer of foyers" [value]="foyer.idFoyer">{{ foyer.nomFoyer }}</option>
+              </select>
+              <div class="invalid-feedback">
+                Veuillez sélectionner un foyer.
+              </div>
+            </div>
+          </div>
+  
+          <!-- Ajoutez d'autres champs de formulaire au besoin -->
+  
+          <div class="text-center">
+            <button type="submit" class="btn btn-i"> <i class="fas fa-cube "></i>Modifier Bloc</button>
+          </div>
+          <br>
+          <br>
+          <!-- Ajoutez ceci pour afficher l'alerte Bootstrap -->
+<div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+  Formulaire soumis avec succès!
+ 
+</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+<app-footer-back class="footer-container"></app-footer-back>

@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  Foyer:
+    container_name: Foyer
+    build: 
+      context: ../Spring-Boot
+      dockerfile: dockerfile  # Specify the name of your Dockerfile for the Foyer service
+    ports:
+      - "8084:8084"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://dbmysql:3306/springProject?createDatabaseIfNotExist=true&userSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=nidhal123
+    restart: unless-stopped
+    image: narnidhal/foyer:6.0
+    depends_on:
+      - dbmysql
+
+  dbmysql:
+    image: "mysql:5.6"
+    container_name: dbmysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=nidhal123
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
+
+  angular-app:
+    container_name: FoyerFront
+    build: 
+      context: ../Angular
+      dockerfile: dockerfile  # Specify the name of your Dockerfile for the Angular service
+    image: narnidhal/foyerfront:12  # Specify the name of your image and version (in this example, "3")
+    ports:
+      - "4200:4200"  # Make sure ports match those used in your Angular application
+    restart: always  # Optional: always restart the container in case of failure
+
+volumes:
+  db:

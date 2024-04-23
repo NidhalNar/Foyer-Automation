@@ -1,0 +1,19 @@
+.card {
+    margin: 50px auto; 
+    max-width: 500px; 
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: #428bca;
+    color: #fff;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px;
+  }
+  
+  .card-body {
+    padding: 60px;
+  }
+  

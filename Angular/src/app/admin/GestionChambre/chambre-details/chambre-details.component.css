@@ -1,0 +1,63 @@
+/* Ajoutez ces styles à votre fichier CSS (styles.css ou styles.scss) */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(70deg,  #427D9D, #9BBEC8, #DDF2FD);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(70deg, #ffffff, #ecf0f1); /* Dégradé de blanc à une nuance très claire */
+  border-radius: 10px;
+  width: 150%;
+  max-width: 600px;
+  height: auto;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+.card-header {
+  background-color: #3498db;
+  color: #fff;
+  padding: 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 767px) {
+  .table th,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+}

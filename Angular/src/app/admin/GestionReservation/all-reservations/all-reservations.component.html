@@ -1,0 +1,42 @@
+<body>
+  <div class="page-container">
+    <div class="content-container">
+      <div class="sidebar">
+        <!-- Your sidebar content goes here -->
+        <app-admin-dash></app-admin-dash>
+      </div>
+      <div class="content">
+        <div class="container mt-4">
+          <div class="table-container mx-auto">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID réservation</th>
+                  <th>Année Universitaire</th>
+                  <th>Validité du réservation</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reservation of reservations">
+                  <td>{{ reservation.idReservation }}</td>
+                  <td>{{ currentYear }}</td>
+                  <td>{{ reservation.estValide }}</td>
+                  <td>
+                    <button *ngIf="!reservation.estValide" (click)="validateReservation(reservation.idReservation)"
+                      class="btn btn-success btn-sm ml-2">
+                      <i class="fas fa-check"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<app-footer-back class="footer-container"></app-footer-back>

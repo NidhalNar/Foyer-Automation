@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-md-2">
+        <app-admin-dash></app-admin-dash>
+    </div>
+    <div class="col-md-10" style="padding: 20px; margin-top: 50px;">
+        <div class="modal fade " id="addFoyer" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajout Foyer</h1>
+                        <button type="button" class="btn-close" #closeButton data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #foyerForm="ngForm">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="name">Name</label>
+                                    <input type="text" [(ngModel)]="foyer.nomFoyer" class="form-control" name="name"
+                                        id="name" required>
+                                    <!-- Display an error message if the name field is not filled -->
+                                    <div *ngIf="foyerForm.controls['name'].touched && foyerForm.controls['name'].hasError('required')"
+                                        class="text-danger">
+                                        Name is required.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="capacite">Capacité</label>
+                                    <input type="text" [(ngModel)]="foyer.capciteFoyer" class="form-control"
+                                        name="capacite" id="capacite" required>
+                                    <!-- Display an error message if the capacite field is not filled -->
+                                    <div *ngIf="foyerForm.controls['capacite'].touched && foyerForm.controls['capacite'].hasError('required')"
+                                        class="text-danger">
+                                        Capacité is required.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="type">Type</label>
+                                    <select class="form-control" id="type" [(ngModel)]="foyer.type" name="type"
+                                        aria-label="Default select example" required>
+                                        <option value="" disabled selected>Select a type</option>
+                                        <option *ngFor="let tp of types" [value]="tp">{{tp}}</option>
+                                    </select>
+                                    <!-- Display an error message if the type field is not selected -->
+                                    <div *ngIf="foyerForm.controls['type'].touched && foyerForm.controls['type'].hasError('required')"
+                                        class="text-danger">
+                                        Type is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success"
+                            [disabled]="!foyer.nomFoyer || !foyer.capciteFoyer || !foyer.type" *ngIf="isAdd"
+                            (click)="add()">Save</button>
+                        <button type="button" class="btn btn-success" *ngIf="!isAdd"
+                            (click)="editAction()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade " id="qrcode" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <img *ngIf="qrCodeImage" [src]="qrCodeImage" alt="QR Code Image">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                        <button type="button" #closeButtonDelete class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Delete foyer
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" (click)="deleteAction()" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h1>Foyer</h1>
+            <div style="display: flex; justify-content: right;">
+
+                <button data-bs-toggle="modal" data-bs-target="#addFoyer" (click)="isAdd = true ;" class="btn"
+                    style="background-color: #C8AE7D; color: white;">+
+                    Ajout Foyer</button>
+            </div>
+            <div style="display : flex ; justify-content : space-between ">
+                <div>
+                    <div>
+                        <label for="">Gouvernerat</label>
+                        <select class="form-control" style="width: 400px;" [(ngModel)]="filter" (change)="filterFoyer()"
+                            id="grouvenerat" name="grouvenerat" aria-label="Default select example">
+                            <option value="ALL">All</option>
+                            <option *ngFor="let g of grouvenerats" [value]="g">{{g}}
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="">Type</label>
+                        <select class="form-control" style="width: 400px;" [(ngModel)]="filterType"
+                            (change)="filterFoyerType()" id="Type" name="Type" aria-label="Default select example">
+                            <option value="ALL">All</option>
+                            <option *ngFor="let t of types" [value]="t">{{t}}
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="table-container mx-auto">
+                <table class="table table-striped">
+                    <thead class="table-dark ">
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Capacity
+                            </th>
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let i of allFoyer">
+                            <td>{{i.nomFoyer}}</td>
+                            <td>{{i.capciteFoyer}}</td>
+                            <td>{{i.type}}</td>
+
+                            <td>
+                                <i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#addFoyer"
+                                    (click)="edit(i)"
+                                    style="cursor: pointer; color: rgb(0, 30, 255); font-size: 1.5rem;"></i>
+                                <i class="bi bi-trash" (click)="delete(i)" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                    style="cursor: pointer; margin-left: 10px; color: red;  font-size: 1.5rem;"></i>
+                                <!-- <i class="bi bi-plus-square" (click)="affect(i.idFoyer)" *ngIf="!i.universite" data-bs-toggle="modal"
+                                        data-bs-target="#affectFoyer"
+                                        style="cursor: pointer; margin-left: 10px; color: green;  font-size: 1.5rem;"></i> -->
+                                <i class="bi bi-qr-code" data-bs-toggle="modal" data-bs-target="#qrcode"
+                                    (click)="qrcodeAction(i)"
+                                    style="cursor: pointer; margin-left: 10px; color: black;  font-size: 1.5rem;"></i>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

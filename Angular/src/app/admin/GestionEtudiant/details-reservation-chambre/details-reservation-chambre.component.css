@@ -1,0 +1,69 @@
+/* Ajoutez ces styles à votre fichier CSS (styles.css ou styles.scss) */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+
+.table th, .table td {
+  border: 1px solid #ccc; /* Change border color to gray */
+  padding: 12px;
+  text-align: left;
+}
+.table th {
+  background-color: #C8AE7D; /* Change background color to blue */
+  color: #fff; /* Change text color to white */
+}
+
+.table td {
+  background-color: #f0f0f0;
+   /* Change background color to light gray */
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-self: center; 
+}
+
+.card-header {
+  background-color: #EAC696; /* Change background color to blue */
+  color: #fff; /* Change text color to white */
+  padding: 15px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 767px) {
+  .common-table th,
+  .common-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .common-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+}

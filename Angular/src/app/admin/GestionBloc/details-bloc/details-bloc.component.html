@@ -1,0 +1,55 @@
+<!-- Add this link to include Font Awesome CSS -->
+<div class="sidebar">
+  <!-- Your sidebar content goes here -->
+  <app-admin-dash></app-admin-dash>
+</div>
+<body>
+  <div class="container mt-4">
+    <!-- Détails du Bloc et Foyer -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h2 class="mb-0">Détails du Bloc et Foyer</h2>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Bloc Details -->
+            <div *ngIf="blocDetails" class="table-responsive" >
+              <i class="fas fa-cube fa-3x mb-3"></i>
+              <table class="table">
+                <tr>
+                  <th scope="col">Nom du Bloc</th>
+                  <td>{{ blocDetails.nomBloc }}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Capacité du Bloc</th>
+                  <td>{{ blocDetails.capciteBloc }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- Foyer Details -->
+            <div *ngIf="blocDetails && blocDetails.foyer">
+              <i class="fas fa-home fa-3x mb-3"></i>
+              <table class="table">
+                <tr>
+                  <th scope="col">Nom du Foyer</th>
+                  <td>{{ blocDetails.foyer.nomFoyer }}</td>
+                </tr>
+                <tr>
+                  <th scope="col">Capacité du Foyer</th>
+                  <td>{{ blocDetails.foyer.capciteFoyer }}</td>
+                </tr>
+                <!-- Ajoutez d'autres détails du foyer au besoin -->
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<app-footer-back class="footer-container"></app-footer-back>

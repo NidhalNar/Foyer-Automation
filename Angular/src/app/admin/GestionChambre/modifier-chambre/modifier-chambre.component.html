@@ -1,0 +1,59 @@
+<div class="sidebar">
+  <!-- Your sidebar content goes here -->
+  <app-admin-dash></app-admin-dash>
+</div>
+<body>
+  <div class="container">
+    <div class="card mt-4">
+      <div class="card-body">
+        <h2 class="card-title">Modifier la Chambre</h2>
+        <form (ngSubmit)="updateChambre()">
+          <!-- Ajoutez les champs de formulaire nécessaires -->
+          <div class="form-group">
+            <label for="numeroChambre">Numéro de Chambre :</label>
+            <input type="text" id="numeroChambre" [(ngModel)]="chambre.numerochambre" name="numeroChambre" class="form-control" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="typeChambre">Type de Chambre :</label>
+            <select id="typeChambre" [(ngModel)]="chambre.typechambre" name="typeChambre" class="form-control" required>
+              <option [ngValue]="typeChambre.SIMPLE">Simple</option>
+              <option [ngValue]="typeChambre.DOUBLE">Double</option>
+              <option [ngValue]="typeChambre.TRIPLE">Triple</option>
+              <!-- Ajoutez d'autres options au besoin -->
+            </select>
+          </div>
+  
+        
+  
+          <div class="col-md-6 mb-3">
+            <label for="bloc">Sélectionner le Bloc :</label>
+            <select id="bloc" [(ngModel)]="chambre.bloc!.idBloc" name="bloc" class="form-control" required>
+              <option *ngFor="let bloc of blocs" [value]="bloc.idBloc">{{ bloc.nomBloc }}</option>
+            </select>
+            <div class="invalid-feedback">
+          
+          </div>
+        </div>
+  
+  
+          <!-- Ajoutez d'autres champs de formulaire au besoin -->
+  
+          <button type="submit" class="btn btn-i">
+            <i class="fas fa-bed"></i> Modifier Chambre
+          </button>
+          <br>
+          <!-- Ajoutez ceci pour afficher l'alerte Bootstrap -->
+<div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+  Formulaire soumis avec succès!
+ 
+</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+
+<app-footer-back class="footer-container"></app-footer-back>

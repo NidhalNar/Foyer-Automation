@@ -1,0 +1,79 @@
+/* add-chambres.component.css */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+  
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Ajustez la largeur de la carte selon vos préférences */
+    min-height: 500px; /* Utilisez min-height au lieu de height */
+  }
+  .card-header {
+    background-color: #C8AE7D;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+ 
+  
+  .form-group {
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+ input,
+select {
+  width: 100%;
+  padding: 8px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+button {
+  margin-right: 10px; /* Add some margin between buttons */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+  
+  button:hover {
+    background-color: #EAC696;
+  }
+  
+  h2 {
+    color: #fff;
+    text-align: center;margin-top: auto;
+  }
+  /* Your existing CSS */
+
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+ 

@@ -1,0 +1,92 @@
+/* Add-chambres.component.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  border-bottom: 1px solid #C8AE7D;
+  padding: 12px; /* Adjusted padding for better spacing */
+}
+
+.table th {
+  background-color: #C8AE7D;
+  color: #fff;
+
+}
+
+.btn-group {
+  margin-bottom: 8px;
+}
+
+
+.btn {
+  padding: 8px 10px; /* Adjusted padding for better button size */
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.btn-i {
+  background-color: #765827;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+.btn-datee{
+  background-color: #f0ad4e;
+  color: #fff;
+  
+}
+
+/* Styling for Font Awesome icons inside buttons */
+.btn i {
+  margin-right: 5px;
+}
+
+/* Hover effect for buttons */
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Add this to your existing CSS or create a new CSS file */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+span {
+  padding: 8px 16px;
+  margin: 0 4px;
+  font-weight: bold;
+  
+}

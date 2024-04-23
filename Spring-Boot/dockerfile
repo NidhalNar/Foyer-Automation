@@ -1,0 +1,8 @@
+FROM openjdk:17
+
+
+EXPOSE 8084
+
+ADD target/SpringBootEsprit-0.0.1-SNAPSHOT.jar foyer.jar
+
+ENTRYPOINT ["java" , "-jar" , "foyer.jar"]

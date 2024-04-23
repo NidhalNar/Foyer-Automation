@@ -1,0 +1,78 @@
+<!-- Your Component HTML -->
+<div class="page-container">
+  <div class="content-container">
+    <div class="sidebar">
+      <!-- Your sidebar content goes here -->
+      <app-admin-dash></app-admin-dash>
+    </div>
+<body>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-box no-header clearfix">
+          <div class="main-box-body clearfix">
+            <div class="table-responsive">
+              <table class="table user-list">
+                <thead>
+                  <tr>
+                    <th><span>Nom du Bloc</span></th>
+                    <th><span>Capacité du Bloc</span></th>
+                    <th><span>Nom du Foyer</span></th>
+                    <th ><span>Actions</span></th> 
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let bloc of blocsToShow">
+                    <td>{{ bloc.nomBloc  }}</td>
+                    <td>{{ bloc.capciteBloc  }}</td>
+                    <td>{{ bloc.foyer ? bloc.foyer.nomFoyer : 'Non spécifié' }}</td>
+                    <td>
+                      <div class="btn-group d-flex " role="group">
+                        <a  class="table-link text-danger" (click)="removeBlocAfterFoyerRemoval(bloc.idBloc)">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a  class="table-link text-info" (click)="showBlocDetails(bloc.idBloc)">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-info-circle fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a  class="table-link text-warning" (click)="editBloc(bloc.idBloc)">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- ... Autres éléments du composant ... -->
+  
+  <div class="text-center mt-3">
+    <div>
+      <button class="pagination-button" [disabled]="currentPage === 1" (click)="pageChanged(currentPage - 1)">Previous</button>
+      <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="pageChanged(currentPage + 1)">Next</button>
+    </div>
+  </div>
+  
+  
+  
+  <!-- ... Autres éléments du composant ... -->
+  
+  
+  </div>
+</body>
+
+<app-footer-back class="footer-container"></app-footer-back>

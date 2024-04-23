@@ -1,0 +1,12 @@
+<div>
+    <app-navbar></app-navbar>
+  <div>
+    <div class="container-fluid" style="padding: 30px;">
+        <div class="row">
+            <app-card *ngFor="let i of allFoyer" [childInput]="i"></app-card>
+        </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  </div>
+  

@@ -1,0 +1,24 @@
+<!-- combined-charts.component.html -->
+<app-admin-dash></app-admin-dash>
+<router-outlet></router-outlet>
+<body>
+    <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-10 offset-md-1"> <!-- Adjusted to col-md-10 and offset-md-1 to control width and center -->
+            <div class="row">
+              <div class="col-md-6">
+                <app-evaluation-chart></app-evaluation-chart>
+              </div>
+              <div class="col-md-6">
+                <app-dashboard></app-dashboard>
+              </div>
+              <div class="col-md-10 offset-md-1"> <!-- Adjusted to col-md-10 and offset-md-1 to control width and center -->
+                <app-statistique-chambre></app-statistique-chambre>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+
+<app-footer-back class="footer-container"></app-footer-back>

@@ -1,0 +1,75 @@
+<!-- all-reservations-etudiant.component.html -->
+<body>
+  <div class="page-container">
+    <div class="content-container">
+      <div class="sidebar">
+        <!-- Your sidebar content goes here -->
+        <app-admin-dash></app-admin-dash>
+      </div>
+      <button class="btn btn-success " (click)="downloadExcel()">
+        Liste des étudiants <i class="fas fa-file-excel"></i>
+      </button>
+      
+      <div class="content">
+        <div class="col mt-5">
+          <div class="table-container">
+            <table class="table">
+              <thead>
+                <tr>
+                <th>ID Étudiant</th>
+                  <th>Nom</th>
+                  <th>Prénom</th>
+                  <th>Email</th>
+                  <th>Réservations</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users" [ngClass]="{'etudiant-sans-reservation': !user.reservation || user.reservation.length === 0}">
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.firstname }}</td>
+                  <td>{{ user.lastname }}</td>
+                  <td>{{ user.email }}</td>
+                  <td *ngIf="user.reservation && user.reservation.length > 0">
+                    <ul>
+                      <li *ngFor="let reservation of user.reservation">
+                        - ID Réservation: {{ reservation.idReservation }},<br>
+                        - Année Universitaire: {{ currentYear }},<br>
+                        - Est Valide: {{ reservation.estValide }}
+                      </li>
+                    </ul>
+                  </td>
+                  <td *ngIf="user.reservation && user.reservation.length === 0" class="etudiant-sans-reservation-text" colspan="5">
+                    Cet étudiant n'a pas de réservations.
+                  </td>
+                  <td *ngIf="user.reservation && user.reservation.length > 0">
+                    <a class="btn btn-i"
+                      [routerLink]="['/etudiant/DetailsReservationChambre', user.id]"> <i class="fas fa-eye"></i> </a>
+                      <button class="btn btn-excel " (click)="user.id && downloadExcelID(user.id)">
+                        <i class="fas fa-file-excel"></i> 
+                      </button>
+                         
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          
+          </div>
+         
+          <div class="pagination-container d-flex justify-content-center">
+            <button class="btn btn-i btn-sm" (click)="prevPage()">
+              <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="btn btn-i btn-sm ml-2" (click)="nextPage()">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<app-footer-back class="footer-container"></app-footer-back>

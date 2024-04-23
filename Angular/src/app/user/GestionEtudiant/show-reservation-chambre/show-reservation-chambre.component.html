@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-lg-8">
+      <div *ngIf="(user | async) as user">
+        <div class="card">
+          <div class="card-header">
+            <h2>Vos détails</h2>
+          </div>
+          <div class="card-body">
+            <div class="mb-4">
+              <strong>ID :</strong> {{ user.id }}<br>
+              <strong>Nom :</strong> {{ user.lastname }}<br>
+              <strong>Prénom :</strong> {{ user.firstname }}<br>
+              <strong>Email :</strong> {{ user.email }}<br>
+              <strong>CIN :</strong> {{ user.cin }}<br>
+            </div>
+  
+            <hr>
+  
+            <div class="mb-4">
+              <strong>Réservations :</strong>
+              <ul class="list-group">
+                <ng-container *ngIf="chambres | async as chambresList">
+                  <li *ngFor="let chambre of chambresList" class="list-group-item">
+                    <strong>Numéro de chambre :</strong> {{ chambre.numerochambre }}<br>
+                    <strong>Type de chambre :</strong> {{ chambre.typechambre }}<br>
+  
+                    <hr>
+  
+                    <strong>Réservations :</strong>
+                    <ul class="list-group">
+                      <ng-container *ngIf="chambre.reservations">
+                        <li *ngFor="let reservation of chambre.reservations" class="list-group-item">
+                          <!-- Display reservation details here -->
+                          <strong>ID de réservation :</strong> {{ reservation.idReservation }}<br>
+                          <!-- Add more reservation details as needed -->
+                        </li>
+                      </ng-container>
+                    </ul>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

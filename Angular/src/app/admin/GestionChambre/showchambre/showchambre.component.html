@@ -1,0 +1,62 @@
+<div class="page-container">
+  <div class="content-container">
+    <div class="sidebar">
+      <!-- Your sidebar content goes here -->
+      <app-admin-dash></app-admin-dash>
+    </div>
+<body>
+  <div class="container mt-4 mx-auto">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th>Numéro de Chambre</th>
+          <th>Type de Chambre</th>
+          <th>Nom du Bloc</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chambre of chambresToShow">
+          <td>{{ chambre.numerochambre }}</td>
+          <td>{{ chambre.typechambre }}</td>
+          <td>{{ chambre.bloc!.nomBloc }}</td>
+          <td>
+            <div class="btn-group" role="group">
+              <!-- Action buttons with Font Awesome icons -->
+              <button type="button" class="btn btn-danger" (click)="deleteChambre(chambre.idChambre)">
+                <i class="fas fa-trash"></i> 
+              </button>
+            
+              <button type="button" class="btn btn-i" (click)="showDetails(chambre.idChambre)">
+                <i class="fas fa-info-circle"></i> 
+              </button>
+             
+              <button type="button" class="btn btn-warning" (click)="editChambre(chambre.idChambre)">
+                <i class="fas fa-edit"></i> 
+              </button> 
+             
+              <button type="button" class="btn btn-danger" (click)="generateAndDownloadPDF(chambre.bloc.idBloc)">
+                <i class="fas fa-file-pdf"></i> 
+              </button>
+              <button type="button" class="btn btn-datee" (click)="getChambreDetailsForCurrentChambre(chambre.idChambre)">
+                <i class="fas fa-calendar-alt"></i> 
+              </button>
+              
+  
+            </div>
+            
+          </td>
+        </tr>
+        <div class="pagination">
+          <button class="btn" (click)="pageChanged(currentPage - 1)" [disabled]="currentPage === 1">&lt;</button>
+          <span>{{ currentPage }}</span>
+          <button class="btn" (click)="pageChanged(currentPage + 1)" [disabled]="currentPage * itemsPerPage >= totalItems">&gt;</button>
+        </div>
+        
+      </tbody>
+    </table>
+  </div>
+  
+</body>
+
+<app-footer-back class="footer-container"></app-footer-back>

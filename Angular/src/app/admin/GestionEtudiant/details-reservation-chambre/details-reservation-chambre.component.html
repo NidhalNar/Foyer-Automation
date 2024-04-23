@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="content-container">
+    <div class="sidebar">
+      <!-- Your sidebar content goes here -->
+      <app-admin-dash></app-admin-dash>
+    </div>
+    <!-- Content -->
+   <body>
+  <div class="container mt-4">
+    <div class="col-md-9 mt-4">
+      <div class="content">
+        <div *ngIf="chambres.length > 0">
+          <div class="alert alert-success alert-white rounded" *ngIf="showSuccessAlert">
+            <div class="icon">
+              <i class="fa fa-check"></i>
+            </div>
+            <strong>Félicitations!</strong>
+            Vous avez une réservation.
+          </div>
+        </div>
+
+
+
+    <div *ngIf="chambres.length > 0; ">
+      <div  class="card" *ngFor="let chambre of chambres">
+        <div class="card-header">
+          <i class="fas fa-bed card-icon"></i> <!-- Icône du lit -->
+          Chambre  {{ chambre.numerochambre }}
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered">
+            <tr>
+              <th scope="row"> Numéro de Chambre</th>
+              <td>{{ chambre.numerochambre }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Type de Chambre</th>
+              <td>{{ chambre.typechambre }}</td>
+            </tr>
+
+            <tr *ngFor="let reservation of chambre.reservations">
+              <th scope="row">Année  universitaire</th>
+              <td>{{ reservation.anneeUniversitaire }}</td>
+             
+            </tr>
+            <tr *ngFor="let reservation of chambre.reservations">   
+              <th scope="row">Validité de la réservation</th>
+              <td>{{ reservation.estValide }}</td>
+            </tr>
+            <!-- Ajoutez d'autres détails au besoin -->
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+   </body>
+  <app-footer-back class="footer-container"></app-footer-back>

@@ -1,0 +1,8 @@
+<p>star-rating works!</p>
+<div class="star-rating">
+    <ng-container *ngFor="let star of starArray; let i = index">
+      <span class="star" [class.full]="star === 1">&#9733;</span>
+      <span class="star" [class.full]="star === 0">&#9734;</span>
+    </ng-container>
+  </div>
+  

@@ -1,0 +1,48 @@
+<div class="container my-container" *ngIf="!authResponse.mfaEnabled">
+    <div class="card justify-content-md-center">
+        <div class="card-header text-center">
+            <h3>Register</h3>
+        </div>
+        <form class="card-body" (ngSubmit)="registerUser()" #f="ngForm">
+            <div *ngIf=" message " class="alert alert-info " role="alert ">
+                {{ message }}
+            </div>
+
+            <div class="mb-3">
+                <input id="firstname" name="firstname" class="form-control" placeholder="Firstname" required minlength="3" pattern="[a-zA-Z]*" type="text" [(ngModel)]="registerRequest.firstname" #firstname="ngModel">
+                <div *ngIf="firstname.touched && firstname.invalid" class="text-danger">
+                    <div *ngIf="firstname.errors?.['required']">Le prénom est obligatoire.</div>
+                    <div *ngIf="firstname.errors?.['minlength']">Le prénom doit contenir au moins 3 caractères.</div>
+
+                    <div *ngIf="firstname.errors?.['pattern']">Le prénom ne doit contenir que des lettres.</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input id="lastname" name="lastname" class="form-control" placeholder="Lastname" required minlength="3" pattern="[a-zA-Z]*" type="text" [(ngModel)]="registerRequest.lastname" #lastname="ngModel">
+                <div *ngIf="lastname.touched && lastname.invalid" class="text-danger">
+                    <div *ngIf="lastname.errors?.['required']">Le nom est obligatoire.</div>
+                    <div *ngIf="lastname.errors?.['minlength']">Le nom doit contenir au moins 3 caractères.</div>
+                    <div *ngIf="lastname.errors?.['pattern']">Le nom ne doit contenir que des lettres.</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input id="email" name="email" class="form-control" placeholder="E-mail" required type="text" [(ngModel)]="registerRequest.email" #email="ngModel" pattern="([a-zA-Z0-9._-]+@gmail.com|[a-zA-Z0-9._-]+@esprit.tn)">
+                <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty)">
+                    Email invalide !
+                </div>
+            </div>
+            <div class="mb-3">
+                <input id="password" name="password" class="form-control" placeholder="Password" required pattern="^[a-zA-Z0-9]{8,}?" type="password" [(ngModel)]="registerRequest.password" #password="ngModel">
+                <div *ngIf="password.touched && password.invalid" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">Le mot de passe est obligatoire.</div>
+                    <div *ngIf="password.errors?.['pattern']">Le mot de passe doit répondre aux critères spécifiés.</div>
+                </div>
+            </div>
+
+            <div class="mb-3 d-grid ">
+                <button type="submit " class="btn btn-primary " [disabled]="f.invalid">Register</button>
+                <a routerLink="/register " class="btn btn-link ">Login</a>
+            </div>
+        </form>
+    </div>
+</div>

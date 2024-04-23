@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<br>
+<div class="container mt-4 ">
+  <router-outlet></router-outlet>
+
+    <h2>Détails de la Chambre</h2>
+    <div *ngIf="selectedChambre">
+      <br>
+      <table class="table table-bordered">
+        <tr>
+          <th scope="row">Numéro de Chambre</th>
+          <td>{{ selectedChambre.numerochambre }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Type de Chambre</th>
+          <td>{{ selectedChambre.typechambre }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Nom du Bloc</th>
+          <td>{{ selectedChambre.bloc!.nomBloc }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Capacité du Bloc</th>
+          <td>{{ selectedChambre.bloc!.capciteBloc }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Foyer</th>
+          <td>{{ selectedChambre.bloc!.foyer!.nomFoyer }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Capacité du Foyer</th>
+          <td>{{ selectedChambre.bloc!.foyer!.capciteFoyer }}</td>
+        </tr>
+        <!-- Ajoutez d'autres détails au besoin -->
+      </table>
+    </div>
+  </div>
+  <app-footer></app-footer>

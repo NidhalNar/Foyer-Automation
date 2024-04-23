@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-md-2">
+        <app-admin-dash></app-admin-dash>
+    </div>
+    <div class="col-md-10" style="padding: 20px; margin-top: 50px;">
+        <div class="modal fade " id="addUniversity" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajout university</h1>
+                        <button type="button" class="btn-close" #closeButton data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #universiteForm="ngForm">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="name">Name</label>
+                                    <input type="text" [(ngModel)]="universite.nomUniversite"
+                                        class="form-control" name="name" id="name" required>
+                                    <!-- Display an error message if the name field is not filled -->
+                                    <div *ngIf="universiteForm.controls['name'].touched && universiteForm.controls['name'].hasError('required')"
+                                        class="text-danger">
+                                        Name is required.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="adresse">Adresse</label>
+                                    <input type="text" [(ngModel)]="universite.adresse" class="form-control"
+                                        name="adresse" id="adresse" required>
+                                    <!-- Display an error message if the adresse field is not filled -->
+                                    <div *ngIf="universiteForm.controls['adresse'].touched && universiteForm.controls['adresse'].hasError('required')"
+                                        class="text-danger">
+                                        Adresse is required.
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="grouvenerat">Gouvernerat</label>
+                                    <select class="form-control" id="grouvenerat"
+                                        [(ngModel)]="universite.grouvenerat" name="grouvenerat"
+                                        aria-label="Default select example" required>
+                                        <option value="" disabled selected>Select a Gouvernerat</option>
+                                        <option *ngFor="let g of grouvenerats" [value]="g">{{g}}</option>
+                                    </select>
+                                    <!-- Display an error message if the grouvenerat field is not selected -->
+                                    <div *ngIf="universiteForm.controls['grouvenerat'].touched && universiteForm.controls['grouvenerat'].hasError('required')"
+                                        class="text-danger">
+                                        Gouvernerat is required.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success"
+                            [disabled]="!universite.nomUniversite || !universite.adresse || !universite.grouvenerat"
+                            *ngIf="isAdd" (click)="add()">Save</button>
+                        <button type="button" class="btn btn-success" *ngIf="!isAdd"
+                            (click)="editAction()">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                        <button type="button" #closeButtonDelete class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Delete university
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" (click)="deleteAction()" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade " id="affectFoyer" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Affect Foyer</h1>
+                        <button type="button" class="btn-close" #closeButtonAffect data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+        
+                                <div class="col-12">
+                                    <label for="">Foyer</label>
+                                    <select class="form-control" id="universite" (change)="onFoyerChange($event)"
+                                        name="universite" aria-label="Default select example">
+                                        <option value="'Select foyer'" selected disabled></option>
+                                        <option *ngFor="let un of allFoyer" [value]="un.idFoyer">{{un.nomFoyer}}
+                                        </option>
+        
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-success" (click)="affectAction()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+     
+
+        <div >
+            <h1>University</h1>
+            <div style="display: flex; justify-content: right;">
+
+                <button data-bs-toggle="modal" data-bs-target="#addUniversity" (click)="isAdd = true ;"
+                    class="btn" style="background-color: #C8AE7D; color: white;">+ Ajout University</button>
+            </div>
+
+            <table class="table table-striped" style="width: 100%;">
+                <thead class="table-dark ">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Adresse
+                        </th>
+
+                        <th>
+                            Foyer
+                        </th>
+                        <th>
+                            Gouvernerat
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of allUniversite">
+                        <td>{{i.nomUniversite}}</td>
+                        <td>{{i.adresse}}</td>
+                        <td>{{i.foyer?.nomFoyer ?? 'NON_AFFECT'}}</td>
+                        <td>{{i.grouvenerat}}</td>
+                        <td>
+                            <i class="bi bi-plus-square" (click)="affect(i)" style="cursor: pointer; margin-left: 10px; color: black;  font-size: 1.5rem;" *ngIf="!i.foyer" data-bs-toggle="modal"
+                            data-bs-target="#affectFoyer"
+                            ></i>
+                            <i class="bi bi-pencil-square" style="cursor: pointer; margin-left: 10px; color: black;  font-size: 1.5rem;" data-bs-toggle="modal"
+                                data-bs-target="#addUniversity" (click)="edit(i)" ></i>
+                            <i class="bi bi-trash" (click)="delete(i)" style="cursor: pointer; margin-left: 10px; color: black;  font-size: 1.5rem;" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" ></i>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+                
+
+                   
+           
+  

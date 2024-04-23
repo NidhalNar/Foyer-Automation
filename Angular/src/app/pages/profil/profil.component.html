@@ -1,0 +1,95 @@
+Atoui Said
+<div xmlns="http://www.w3.org/1999/html">
+    <app-navbar></app-navbar>
+</div>
+<div *ngIf="userDetails" class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header" style="background-color: #C8AE7D; color: white;">
+                    <h5 class="mb-0 " style="font-size: 20px; ">Détails de l'utilisateur</h5>
+                </div>
+                <div class=" card-body ">
+                    <table class="table table-bordered ">
+                        <tbody>
+                            <tr>
+                                <th scope="row ">Prénom</th>
+                                <td>{{ userDetails.firstname }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row ">Nom</th>
+                                <td>{{ userDetails.lastname }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row ">E-mail</th>
+                                <td>{{ userDetails.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row ">École</th>
+                                <td>{{ userDetails.ecole }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center ">
+                        <button class="btn btn-primary me-2" style="background-color: #C8AE7D;" (click)="afficherNouveauCard = true">
+                            <i class="fa-solid fa-pencil"></i> Modifier
+                        </button>
+
+                        <button class="btn btn-danger " (click)="supprimerProfil() ">
+              <i class="fa fa-trash "></i> Supprimer
+            </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="afficherNouveauCard" class="d-flex align-items-center justify-content-center vh-100">
+    <div class="card">
+        <div class="card-header" style="background-color: #C8AE7D; color: white;">
+            <h1 class=" card-title fs-5 ">
+                <i class="fas fa-edit me-2 "></i> Modifier les informations
+            </h1>
+        </div>
+        <div class="modal-body ">
+            <div *ngIf="message " class="alert alert-success " role="alert ">
+                {{ message }}
+            </div>
+            <form class="form ">
+                <div class="mb-2 ">
+                    <input type="text " class="form-control " id="lastname " placeholder="Nom " [(ngModel)]="userDetails.lastname " name="lastname ">
+
+                </div>
+                <div class="mb-2 ">
+                    <input type="text " class="form-control " id="firstname " placeholder="Prénom " [(ngModel)]="userDetails.firstname " name="firstname ">
+                </div>
+                <div class="mb-2 ">
+                    <input type="email " class="form-control " id="email " placeholder="E-mail " [(ngModel)]="userDetails.email " name="email ">
+                </div>
+                <div class="mb-2 ">
+                    <input type="password " class="form-control " id="password " placeholder="Mot de passe " [(ngModel)]="userDetails.password " name="password ">
+                </div>
+                <div class="mb-2 ">
+                    <input type="text " class="form-control " id="cin " placeholder="Cin " [(ngModel)]="userDetails.cin " name="cin ">
+                </div>
+                <div class="mb-2 ">
+                    <input type="text " class="form-control " id="ecole " placeholder="École " [(ngModel)]="userDetails.ecole " name="ecole ">
+                </div>
+
+                <div class="modal-footer bg-light d-flex justify-content-center ">
+                    <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">
+                <i class="fas fa-times me-1 " (click)="fermerNouveauCard() "></i> Fermer
+              </button>
+                    <button (click)="updateProfile() " class="btn btn-primary ">
+                <i class="fas fa-save me-1 "  ></i> Enregistrer
+              </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    <app-footer></app-footer>
+</div>

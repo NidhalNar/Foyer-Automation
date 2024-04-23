@@ -1,0 +1,55 @@
+<div class="sidebar">
+  <!-- Your sidebar content goes here -->
+  <app-admin-dash></app-admin-dash>
+</div>
+<body>
+
+    <div class="container mt-4">
+   
+      <div *ngIf="selectedChambre">
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-bed card-icon"></i> <!-- Icône du lit -->
+            Chambre {{ selectedChambre.numerochambre }}
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <tr>
+                <th scope="row"> Numéro de Chambre</th>
+                <td>{{ selectedChambre.numerochambre }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Type de Chambre</th>
+                <td>{{ selectedChambre.typechambre }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Nom du Bloc</th>
+                <td>{{ selectedChambre.bloc!.nomBloc }}</td>
+              </tr>
+              <tr>
+                <th scope="row">Capaciter du Bloc</th>
+                <td>{{ selectedChambre.bloc!.capciteBloc }}</td>
+              </tr>
+    
+              <tr *ngIf="selectedEvaluation">
+                <th scope="row">Note evaluation</th>
+                <td>{{ selectedEvaluation.note }}</td>
+              </tr>
+              <tr *ngIf="selectedChambre.bloc && selectedChambre.bloc.foyer">
+                <th scope="row">Nom du Foyer</th>
+                <td>{{ selectedChambre.bloc.foyer.nomFoyer }}</td>
+              </tr>
+              <tr *ngIf="selectedChambre.bloc && selectedChambre.bloc.foyer">
+                <th scope="row">Capacité du Foyer</th>
+                <td>{{ selectedChambre.bloc.foyer.capciteFoyer }}</td>
+              </tr>
+              <!-- Ajoutez d'autres détails au besoin -->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  
+  <app-footer-back class="footer-container"></app-footer-back>

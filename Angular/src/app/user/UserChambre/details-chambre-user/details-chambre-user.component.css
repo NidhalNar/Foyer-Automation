@@ -1,0 +1,35 @@
+.container {
+    background: linear-gradient(45deg, #ECF4D6, #C8AE7D, #65451F);
+   
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    padding-left: 10px;
+    color: #765827; /* Bleu foncé */
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #65451F; /* Bleu foncé */
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #ffff; /* Vert pâle */
+    color: #65451F; /* Bleu foncé */
+  }
+  
+  .table td {
+    background-color: #ffff; /* Beige pâle */
+    color: #65451F; /* Bleu foncé */
+  }
+  

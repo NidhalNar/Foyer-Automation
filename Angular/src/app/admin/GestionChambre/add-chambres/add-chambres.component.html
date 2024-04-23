@@ -1,0 +1,79 @@
+<div class="page-container">
+  <div class="content-container">
+    <div class="sidebar">
+      <!-- Your sidebar content goes here -->
+      <app-admin-dash></app-admin-dash>
+    </div>
+<body>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-header">
+        <h2>Ajouter une chambre</h2>
+      </div>
+      <div class="card-body">
+        <form *ngIf="addChambreForm" [formGroup]="addChambreForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="numerochambre">Numéro de chambre:</label>
+            <input 
+              type="text" 
+              id="numerochambre" 
+              formControlName="numerochambre" 
+              class="form-control" 
+              required 
+              placeholder="Saisissez le numéro de chambre" 
+            />
+            <div *ngIf="addChambreForm.get('numerochambre')?.hasError('required') && addChambreForm.get('numerochambre')?.touched" class="error-message">
+              Le numéro de chambre est requis.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="typechambre">Type de chambre:</label>
+            <select id="typechambre" formControlName="typechambre" class="form-control" required>
+              <option [ngValue]="TypeChambre.SIMPLE">Simple</option>
+              <option [ngValue]="TypeChambre.DOUBLE">Double</option>
+              <option [ngValue]="TypeChambre.TRIPLE">Triple</option>
+              <!-- Ajoutez d'autres options au besoin -->
+            </select>
+            <div *ngIf="addChambreForm.get('typechambre')?.hasError('required') && addChambreForm.get('typechambre')?.touched" class="error-message">
+              Veuillez sélectionner un type de chambre.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bloc">Sélectionner le Bloc:</label>
+            <select id="bloc" formControlName="bloc" 
+            class="form-control" required 
+             >
+              <!-- Populate the options based on your Bloc objects -->
+              <option *ngFor="let bloc of blocs" [ngValue]="bloc">{{ bloc.nomBloc! }}</option>
+            </select>
+            <div *ngIf="addChambreForm.get('bloc')?.hasError('required') && addChambreForm.get('bloc')?.touched " class="error-message">
+              Veuillez sélectionner un bloc.
+            </div>
+          </div>
+          <br/>
+          <!-- Ajoutez d'autres champs du formulaire au besoin -->
+  
+          <div class="text-center">
+            <button type="submit" class="btn ">
+              <i class="fas fa-bed"></i> Ajouter Chambre
+            </button>
+    
+          </div>
+          <br>
+
+          <br>
+          <!-- Ajoutez ceci pour afficher l'alerte Bootstrap -->
+<div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+  ajout chambre avec succès!
+ 
+</div>
+          
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<app-footer-back class="footer-container"></app-footer-back>

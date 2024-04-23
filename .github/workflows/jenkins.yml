@@ -1,0 +1,18 @@
+name: Jenkins Pipeline Trigger
+
+on:
+  push:
+    branches:
+      - Nidhal3 # Change this to match your branch name
+
+jobs:
+  trigger_jenkins_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Jenkins Pipeline
+        run: |
+          curl -X POST -u admin:11d902250284d07e6b0d8625d689b84185 \
+          https://df876f0afc0fb221233c5f0a43db0fa2.serveo.net/job/TestCredentialIOC/build?token=123
+
+     

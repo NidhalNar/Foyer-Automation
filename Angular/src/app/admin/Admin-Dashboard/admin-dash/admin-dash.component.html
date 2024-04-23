@@ -1,0 +1,86 @@
+<!-- Sidebar -->
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky" >
+        <div class="list-group list-group-flush mx-3 mt-4">
+
+            <a (click)="navigateTochart()" class="list-group-item list-group-item-action py-2 ripple"
+                aria-current="true">
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+            </a>
+
+            <a (click)="stayOnAdminPage()" class="list-group-item list-group-item-action py-2 ripple ">
+                <i class="fas fa-credit-card-alt" aria-hidden="true"></i><span>Gestion des réservations</span>
+            </a>
+            <!-- Ajout d'options sous Gestion des réservations -->
+            <a (click)="navigateToListEtudiantsAvecReservations()"
+                class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Liste des étudiants avec réservations</span>
+            </a>
+            <a (click)="navigateToListReservations()"
+                class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Liste des réservations</span>
+            </a>
+
+            <a (click)="stayOnAdminPage()" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-bed" aria-hidden="true"></i>
+                <span>Gestion des chambres</span>
+            </a>
+            <!-- Ajout d'options sous Gestion des chambres -->
+            <a (click)="navigateToAddChambre()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Ajouter une chambre</span>
+            </a>
+            <a (click)="navigateToListChambres()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Liste des chambres</span>
+            </a>
+
+            <a (click)="stayOnAdminPage()" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-bed" aria-hidden="true"></i>
+                <span>Gestion des blocs</span>
+            </a>
+            <!-- Ajout d'options sous Gestion des blocs -->
+            <a (click)="navigateToAddBloc()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Ajouter un bloc</span>
+            </a>
+
+            <a (click)="navigateToShowBloc()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Liste des blocs</span>
+            </a>
+
+
+            <a (click)="stayOnAdminPage()" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-home" aria-hidden="true"></i><span>Gestion des foyers</span>
+            </a>
+          
+            <a (click)="navigateToUniversity()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>University</span>
+            </a>
+            <!-- Ajout d'options sous Gestion des blocs -->
+            <a (click)="navigateToFoyer()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Foyer</span>
+            </a>
+
+            <a (click)="navigateToStat()" class="list-group-item list-group-item-action py-2 ripple sub-option">
+                <span>Statistique</span>
+            </a>
+
+            <hr>
+            <a href="javascript:void(0);" (click)="logout()"  class="list-group-item list-group-item-action py-2 ripple" >
+                <i class="fas fa-sign-out-alt" aria-hidden="true"></i><span>Se déconnecter</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+            aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <a class="navbar-brand" href="#">
+            <img src="../../assets/images/reservini-high-resolution-logo-transparent.png" height="25" alt="MDB Logo"
+                loading="lazy" />
+        </a>
+    </div>
+</nav>

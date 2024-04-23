@@ -1,0 +1,32 @@
+.carousel-inner {
+  background-color: transparent;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: transparent; /* Add this line */
+}
+
+.bg-custom {
+  background-color: rgba(255, 255, 255, 0.3); /* Set the transparency level */
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-color: #fff; /* Set the color of the hamburger icon */
+}
+
+.nav-link.text  {
+  color: #65451F; /* Set the text color */
+  font-size: 18px; 
+}
+
+.carousel-caption{  font-size: 20px; }
+.carousel-caption h5{
+  font-size: 30px;
+}

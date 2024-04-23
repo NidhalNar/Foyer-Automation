@@ -1,0 +1,33 @@
+.bg-custom {
+  background-color: rgba(255, 255, 255, 0.3);
+  /* Set the transparency level */
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-color: #fff;
+  /* Set the color of the hamburger icon */
+}
+
+.nav-link.text {
+  color: #65451F;
+  /* Set the text color */
+  font-size: 18px;
+}
+
+.user-greeting {
+  color: #765827;
+  margin-right: 18px;
+  font-weight: normal;
+  /* Ajustez la valeur selon vos préférences */
+}
+
+.logout-image {
+  transition: border 0.3s;
+  /* Ajoute une transition pour une animation plus fluide */
+}
+
+.logout-image:hover,
+.logout-image:active {
+  border: 2px solid red;
+  /* Ajoute une bordure rouge au survol ou au clic */
+}
