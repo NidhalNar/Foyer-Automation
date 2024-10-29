@@ -59,7 +59,7 @@ This project aims to implement a DevOps pipeline for managing and deploying a Sp
    ![SonarQube Dashboard](/images/sonarqube_dashboard.png)
    
 3. Docker Containerization:
-   ![Docker Containerization](/images/docker_containerization.png)
+   ![Docker Containerization](/images/ocker_containerization.png)
 
 4. Prometheus metrics:
    ![Prometheus Metric](/images/prometheus.png)
